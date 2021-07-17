@@ -24,6 +24,7 @@ class ProductAdapter(val listener: CallbackAdaperListener, val item : ArrayList<
             binding.tvStock.text = "Stock : ${item.jumlah_barang}"
             binding.tvCreated.text = "Created at : ${IOUtils.getTime(item.created_at)}"
             binding.tvLastUpdate.text = "Last Update : ${IOUtils.getTime(item.updated_at)}"
+
         }
 
     }
@@ -35,6 +36,12 @@ class ProductAdapter(val listener: CallbackAdaperListener, val item : ArrayList<
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         holder.onBind(item.get(position))
+        holder.binding.btnEdit.setOnClickListener{
+            listener.onClickEdit(item.get(position))
+        }
+        holder.binding.btnDelete.setOnClickListener{
+            listener.onClickDelete(item.get(position).kode_barang)
+        }
     }
 
     override fun getItemCount(): Int {

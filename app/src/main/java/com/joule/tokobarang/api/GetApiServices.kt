@@ -29,31 +29,31 @@ interface GetApiServices {
     @POST("api/item/add")
     fun addProduct(
         @Header("Authorization") token: String,
-        @Part("kode_barang") kode_barang: String,
-        @Part("nama_barang") nama_barang: String,
-        @Part("jumlah_barang") jumlah: Int,
-        @Part("harga_barang") harga: Long,
-        @Part("satuan_barang") satuan: Int,
-        @Part("status_barang") status: Int
-    ): Call<ResponseBody>
+        @Part("kode_barang") kode_barang: RequestBody,
+        @Part("nama_barang") nama_barang: RequestBody,
+        @Part("jumlah_barang") jumlah: RequestBody,
+        @Part("harga_barang") harga: RequestBody,
+        @Part("satuan_barang") satuan: RequestBody,
+        @Part("status_barang") status: RequestBody
+    ): Call<ProductItem>
 
     @Multipart
     @POST("api/item/update")
     fun updateProduct(
         @Header("Authorization") token: String,
-        @Part("kode_barang") kode_barang: String,
-        @Part("nama_barang") nama_barang: String,
-        @Part("jumlah_barang") jumlah: Int,
-        @Part("harga_barang") harga: Long,
-        @Part("satuan_barang") satuan: Int,
-        @Part("status_barang") status: Int
-    ): Call<ResponseBody>
+        @Part("kode_barang") kode_barang: RequestBody,
+        @Part("nama_barang") nama_barang: RequestBody,
+        @Part("jumlah_barang") jumlah: RequestBody,
+        @Part("harga_barang") harga: RequestBody,
+        @Part("satuan_barang") satuan: RequestBody,
+        @Part("status_barang") status: RequestBody
+    ): Call<ProductItem>
 
     @Multipart
     @POST("api/item/delete")
-    fun deleteProduct(@Header("Authorization") token: String, @Part("kode_barang") kode_barang: String)
+    fun deleteProduct(@Header("Authorization") token: String, @Part("kode_barang") kode_barang: RequestBody) : Call<ResponseBody>
 
     @Multipart
     @POST("api/item/search")
-    fun searchByKode(@Header("Authorization") token: String, @Part("kode_barang") kode_barang: String)
+    fun searchByKode(@Header("Authorization") token: String, @Part("kode_barang") kode_barang: RequestBody) : Call<ResponseBody>
 }

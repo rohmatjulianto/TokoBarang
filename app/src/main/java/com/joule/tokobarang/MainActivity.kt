@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), CallbackDialogListener, CallbackAdaper
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
     lateinit var sharedPreferences: SharedPreferences
+    var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,8 +86,8 @@ class MainActivity : AppCompatActivity(), CallbackDialogListener, CallbackAdaper
         val login = sharedPreferences.getBoolean("login", false)
         show(login)
         if (login) {
-            val token = "Bearer ${sharedPreferences.getString("token", "").toString()}"
-            viewModel.getListBarang(token)
+            token = "Bearer ${sharedPreferences.getString("token", "").toString()}"
+            viewModel.getListBarang(token!!)
             binding.tvEmail.text =
                 String.format(getString(R.string.say_hi), sharedPreferences.getString("email", ""))
         }
@@ -136,18 +137,19 @@ class MainActivity : AppCompatActivity(), CallbackDialogListener, CallbackAdaper
     }
 
     override fun addProduct(item: ProductItem) {
-        TODO("Not yet implemented")
+        viewModel.addProduct(token!!, item)
     }
 
     override fun updateProduct(item: ProductItem) {
-        TODO("Not yet implemented")
+        viewModel.editProduct(token!!, item)
     }
 
-    override fun onClickDelete(productItem: ProductItem) {
-        TODO("Not yet implemented")
+    override fun onClickDelete(kodeBarang: String) {
+        viewModel.deleteProduct(token!!, kodeBarang)
     }
 
     override fun onClickEdit(productItem: ProductItem) {
-        TODO("Not yet implemented")
+        val dialog = FormFragment(this, productItem)
+        dialog.show(supportFragmentManager, "edit")
     }
 }

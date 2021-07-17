@@ -29,5 +29,9 @@ class FormFragment(val listener: CallbackDialogListener, val productItem: Produc
         binding.btnCancel.setOnClickListener{
             dialog?.dismiss()
         }
+
+        if (productItem != null){
+            binding.tvTitle.text = "Edit Product"
+        }
     }
 }
