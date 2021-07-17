@@ -1,6 +1,10 @@
 package com.joule.tokobarang.dialog
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +36,13 @@ class FormFragment(val listener: CallbackDialogListener, val productItem: Produc
 
         if (productItem != null){
             binding.tvTitle.text = "Edit Product"
+
+            binding.etKodeBarang.text = SpannableStringBuilder(productItem.kode_barang)
+            binding.etNameBarang.text = SpannableStringBuilder(productItem.nama_barang)
+            binding.etStockBarang.text = SpannableStringBuilder(productItem.jumlah_barang.toString())
+            binding.etPriceBarang.text = SpannableStringBuilder(productItem.harga_barang.toString())
+            binding.etSatuanBarang.text = SpannableStringBuilder(productItem.satuan_barang)
+            binding.etStatusBarang.text = SpannableStringBuilder(productItem.status_barang.toString())
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.joule.tokobarang
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,6 +23,7 @@ class MainViewModel : ViewModel() {
 
     private val _msg = MutableLiveData<String>()
     val msg : LiveData<String> = _msg
+
 
     companion object{
         val apiServices = ApiServices.api().create(GetApiServices::class.java)
