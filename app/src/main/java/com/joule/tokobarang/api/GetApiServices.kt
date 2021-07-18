@@ -26,6 +26,13 @@ interface GetApiServices {
     fun getListProduct(@Header("Authorization") token: String): Call<ArrayList<ProductItem>>
 
     @Multipart
+    @POST("api/item/search")
+    fun searchByKode(
+        @Header("Authorization") token: String,
+        @Part("kode_barang") kode_barang: RequestBody
+    ): Call<ProductItem>
+
+    @Multipart
     @POST("api/item/add")
     fun addProduct(
         @Header("Authorization") token: String,
@@ -51,9 +58,8 @@ interface GetApiServices {
 
     @Multipart
     @POST("api/item/delete")
-    fun deleteProduct(@Header("Authorization") token: String, @Part("kode_barang") kode_barang: RequestBody) : Call<ResponseBody>
-
-    @Multipart
-    @POST("api/item/search")
-    fun searchByKode(@Header("Authorization") token: String, @Part("kode_barang") kode_barang: RequestBody) : Call<ResponseBody>
+    fun deleteProduct(
+        @Header("Authorization") token: String,
+        @Part("kode_barang") kode_barang: RequestBody
+    ): Call<ResponseBody>
 }

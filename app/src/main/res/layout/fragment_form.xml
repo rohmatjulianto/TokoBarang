@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".dialog.FormFragment">
+    tools:context=".ui.dialog.FormFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -76,7 +76,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_stock_barang"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +94,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_price_barang"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -125,7 +127,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_status_barang"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -152,6 +155,16 @@
                 app:layout_constraintStart_toEndOf="@id/btn_submit"
                 app:layout_constraintTop_toTopOf="@id/btn_submit"
                 app:layout_constraintBottom_toBottomOf="@id/btn_submit"/>
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/pb_form"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

@@ -17,7 +17,7 @@ import retrofit2.Response
 class RegisterViewModel : ViewModel() {
 
     private val _msg = MutableLiveData<String>()
-    val msg : LiveData<String> = _msg
+    val msg: LiveData<String> = _msg
 
     fun register(email: String, pass: String) {
         val apiServices = ApiServices.api().create(GetApiServices::class.java)

@@ -1,4 +1,4 @@
-package com.joule.tokobarang.adapter
+package com.joule.tokobarang.callback
 
 import com.joule.tokobarang.data.ProductItem
 

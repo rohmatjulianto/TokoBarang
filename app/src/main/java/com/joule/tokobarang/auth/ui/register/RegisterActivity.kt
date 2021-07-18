@@ -3,6 +3,7 @@ package com.joule.tokobarang.auth.ui.register
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.joule.tokobarang.R
@@ -25,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.login.setOnClickListener{
             if (email.text!!.isNotEmpty() && pass.text!!.isNotEmpty()){
+                binding.loading.visibility = View.VISIBLE
                 viewModel.register(email.text.toString(), pass.text.toString())
             }else{
                 if (email.text!!.isEmpty()){
@@ -42,6 +44,7 @@ class RegisterActivity : AppCompatActivity() {
                     showStatus("Success")
                     finish()
                 }else{
+                    binding.loading.visibility = View.GONE
                     showStatus(it)
                 }
             }

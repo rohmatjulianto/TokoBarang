@@ -9,7 +9,7 @@ import com.joule.tokobarang.R
 import com.joule.tokobarang.Utils.IOUtils
 import com.joule.tokobarang.data.ProductItem
 import com.joule.tokobarang.databinding.ItemProductBinding
-import java.util.*
+import com.joule.tokobarang.callback.CallbackAdaperListener
 import kotlin.collections.ArrayList
 
 class ProductAdapter(val listener: CallbackAdaperListener, val item : ArrayList<ProductItem>) : RecyclerView.Adapter<ProductAdapter.viewHolder>() {

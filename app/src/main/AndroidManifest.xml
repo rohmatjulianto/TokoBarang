@@ -17,7 +17,7 @@
         <activity
             android:name=".auth.ui.login.LoginActivity"
             android:label="@string/action_sign_in" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

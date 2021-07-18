@@ -8,18 +8,19 @@ import com.joule.tokobarang.Utils.IOUtils
 import com.joule.tokobarang.api.ApiServices
 import com.joule.tokobarang.api.GetApiServices
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class LoginViewModel : ViewModel() {
 
     private val _token = MutableLiveData<String>()
-    val token : LiveData<String> = _token
+    val token: LiveData<String> = _token
 
     private val _error = MutableLiveData<String>()
-    val error : LiveData<String> = _error
-
+    val error: LiveData<String> = _error
 
     fun login(email: String, pass: String) {
         val apiServices = ApiServices.api().create(GetApiServices::class.java)
@@ -35,7 +36,19 @@ class LoginViewModel : ViewModel() {
                     if (response.isSuccessful) {
                         _token.value = IOUtils.getValueResponse(response.body()!!.string(), "token")
                     } else {
-                        _error.value = IOUtils.getValueResponse(response.errorBody()!!.string(), "error")
+                        val value = response.errorBody()!!.string()
+                        try {
+                            val json = JSONObject(value)
+                            if (json.has("error")) {
+                                _error.value = IOUtils.getValueResponse(value, "error")
+                            } else {
+                                _error.value =
+                                    JSONObject(value).getJSONArray("email").get(0).toString()
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+
                     }
 
                 }
